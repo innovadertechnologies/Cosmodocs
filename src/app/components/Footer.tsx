@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="flex items-center gap-4 mb-6">
             <div className="relative w-16 h-16 rounded-full overflow-hidden border border-white/20">
               <Image
-                src="/cosmodocs_logo.jpeg"
+                src="/cosmodocs_logo.png"
                 alt="logo"
                 fill
                 className="object-cover"
