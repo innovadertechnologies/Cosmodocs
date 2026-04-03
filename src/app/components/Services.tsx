@@ -97,26 +97,26 @@ export default function Services() {
     <section className="pt-4 pb-4 relative overflow-hidden" id="services">
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 animate-fadeInUp">
-          <div className="inline-block text-medical-blue px-4 py-1.5  text-3xl font-bold tracking-[0.2em] uppercase mb-3 ">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-20 animate-fadeInUp">
+          <div className="inline-block text-medical-blue px-4 py-1.5 text-2xl md:text-3xl font-bold tracking-[0.2em] uppercase mb-2 md:mb-3 ">
             Our Services
           </div>
           {/* <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight text-lemon-green">
             Complete Dental Care
           </h2> */}
-          <p className="text-medical-blue/70 text-base md:text-lg lg:text-xl">
+          <p className="text-medical-blue/70 text-sm md:text-lg lg:text-xl px-4 md:px-0">
             From routine checkups to advanced smile makeovers — we offer world-class dental treatments tailored to your needs.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-4 gap-1.5 md:gap-6 px-1 md:px-0">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="bg-[#1e3a5f] text-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.25)] group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)] animate-fadeInUp" style={{ animationDelay: `${index * 100}ms` }}
+              className="bg-[#1e3a5f] text-white p-1.5 md:p-8 rounded-[12px] md:rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.25)] group transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)] animate-fadeInUp" style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-full h-48 mb-8 rounded-2xl overflow-hidden border border-white/10 group-hover:border-lemon-green/30 transition-all duration-500">
+              <div className="w-full h-14 md:h-48 mb-1.5 md:mb-8 rounded-lg md:rounded-2xl overflow-hidden border border-white/10 group-hover:border-lemon-green/30 transition-all duration-500">
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -126,18 +126,15 @@ export default function Services() {
                 />
               </div>
 
-              <h3 className="text-2xl font-serif font-bold text-white mb-3 leading-tight">
+              <h3 className="text-[9px] md:text-2xl font-serif font-bold text-white mb-1 md:mb-3 leading-tight min-h-[2.5em] flex items-center">
                 {service.title}
               </h3>
-              {/* <p className="text-xs text-white/40 uppercase tracking-widest font-bold mb-8">
-                {service.subtitle}
-              </p> */}
 
-              <ul className="space-y-4">
-                {service.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm text-white/60 leading-snug">
-                    <span className="text-white/40 font-bold text-base leading-none">•</span>
-                    {f}
+              <ul className="space-y-0.5 md:space-y-4">
+                {service.features.map((f, i) => (
+                  <li key={f} className={`flex items-start gap-1 md:gap-3 text-[6.5px] md:text-sm text-white/60 leading-tight ${i >= 2 ? 'hidden xs:flex' : ''}`}>
+                    <span className="text-lemon-green/40 font-bold text-[7px] md:text-base leading-none">•</span>
+                    <span className="line-clamp-2 md:line-clamp-none">{f}</span>
                   </li>
                 ))}
               </ul>
