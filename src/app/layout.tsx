@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Best Dental Clinic in Gurgaon | Cosmodocs – Painless Dental Care",
+  title: "Cosmodocs",
   description:
     "Cosmodocs is the best dental clinic in Gurgaon offering painless dental care – Dental Implants, Root Canal, Teeth Whitening, Braces & Aligners, Smile Makeover & more. Book your appointment today!",
   keywords:
