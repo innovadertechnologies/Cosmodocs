@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BeforeAfter from "./BeforeAfter";
 
 const services = [
   {
@@ -68,7 +69,7 @@ const services = [
     ],
   },
   {
-    image: "/crown_bridges.jpeg",
+    image: "/crown.jpeg",
     title: "Crowns & Bridges",
     subtitle: "Restore Missing Teeth",
     features: [
@@ -93,7 +94,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="pt-6 pb-6 relative overflow-hidden" id="services">
+    <section className="pt-4 pb-4 relative overflow-hidden" id="services">
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 animate-fadeInUp">
@@ -103,7 +104,7 @@ export default function Services() {
           {/* <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight text-lemon-green">
             Complete Dental Care
           </h2> */}
-          <p className="text-medical-blue/70  text-lg md:text-xl">
+          <p className="text-medical-blue/70 text-base md:text-lg lg:text-xl">
             From routine checkups to advanced smile makeovers — we offer world-class dental treatments tailored to your needs.
           </p>
         </div>
@@ -115,12 +116,13 @@ export default function Services() {
               key={service.title}
               className="bg-[#1e3a5f] text-white p-8 rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.25)] group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)] animate-fadeInUp" style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="relative w-full h-48 mb-8 rounded-2xl overflow-hidden border border-white/10 group-hover:border-lemon-green/30 transition-all duration-500">
+              <div className="w-full h-48 mb-8 rounded-2xl overflow-hidden border border-white/10 group-hover:border-lemon-green/30 transition-all duration-500">
                 <Image
                   src={service.image}
                   alt={service.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  width={400}
+                  height={192}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
 
@@ -144,20 +146,20 @@ export default function Services() {
         </div>
 
         {/* Footer CTA */}
-        <div className="mt-24 text-center animate-fadeInUp delay-500">
+        <div className="mt-10 text-center animate-fadeInUp delay-500">
           <a
             href="#contact"
-            className="group inline-flex items-center gap-4 bg-lemon-green text-medical-blue px-10 py-5 rounded-full font-bold text-lg border border-white/10 hover:bg-lemon-green/90 transition-all"
+            className="bg-lemon-green text-medical-blue px-6 py-3 lg:px-8 lg:py-4 rounded-full font-bold text-xs lg:text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all inline-flex items-center gap-3 whitespace-nowrap"
           >
-            Choose Your Treatment & Book Appointment Now
-
-            <div className="w-8 h-8 flex items-center justify-center transition-transform group-hover:translate-x-1">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </div>
+            Choose Your Treatment Now
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
         </div>
+
+        {/* Before & After Comparison */}
+        <BeforeAfter />
       </div>
     </section>
   );

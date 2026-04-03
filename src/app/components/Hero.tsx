@@ -1,33 +1,49 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const DESKTOP_WIDTH = 1280;
+
 export default function Hero() {
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    function update() {
+      setScale(Math.min(1, window.innerWidth / DESKTOP_WIDTH));
+    }
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden" id="hero">
-      <div className="container mx-auto px-6 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="relative overflow-hidden pt-12" id="hero">
+      <div
+        style={{
+          width: `${DESKTOP_WIDTH}px`,
+          zoom: scale,
+          margin: "0 auto",
+        }}
+        className="min-h-screen flex items-center px-6 relative z-10 pb-12"
+      >
+        <div className="grid grid-cols-2 gap-12 items-center">
           {/* Left Column: Content */}
           <div className="flex flex-col items-start text-left">
-            {/* Badge */}
-            {/* <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full mb-8 animate-fadeInUp shadow-xl">
-              <span className="text-xl">🦷</span>
-              <span className="text-lemon-green text-xs font-bold tracking-[0.2em] uppercase">
-                Premium Dental Care
-              </span> */}
-            {/* </div> */}
 
             {/* Heading */}
-            <h1 className="text-3xl md:text-5xl font-serif font-bold text-white leading-[1.1] mb-6 animate-fadeInUp delay-100 drop-shadow-2xl">
+            <h1 className="text-5xl font-serif font-bold text-white leading-[1.1] mb-6 animate-fadeInUp delay-100 drop-shadow-2xl">
               Best Dental Clinic in Gurgaon  <br />
               <span className="text-lemon-green text-2xl italic">Painless Dental Care Near You</span>
             </h1>
 
             {/* Subheading */}
-            <p className="text-lg md:text-xl text-white font-medium leading-relaxed max-w-xl mb-8 animate-fadeInUp delay-200">
+            <p className="text-xl text-white font-medium leading-relaxed max-w-xl mb-8 animate-fadeInUp delay-200">
               Get advanced dental treatment from expert dentists at Cosmodocs.
             </p>
 
             {/* Bullet Points */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 mb-10 animate-fadeInUp delay-300">
+            <div className="grid grid-cols-2 gap-y-3 gap-x-8 mb-10 animate-fadeInUp delay-300">
               {[
                 "Dental Implants",
                 "Root Canal Treatment (RCT)",
@@ -40,7 +56,7 @@ export default function Hero() {
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
-                  <span className="text-white/90 font-semibold text-sm md:text-base">{item}</span>
+                  <span className="text-white/90 font-semibold text-base">{item}</span>
                 </div>
               ))}
             </div>
@@ -81,7 +97,7 @@ export default function Hero() {
             </div>
 
             {/* Stats Summary - Compact Glass Cards */}
-            <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-2 animate-fadeInUp delay-400 w-full lg:max-w-3xl">
+            <div className="mt-10 grid grid-cols-4 gap-2 animate-fadeInUp delay-400 w-full max-w-3xl">
               {[
                 { val: "500+", lab: "Happy Patients" },
                 { val: "4.7★", lab: "Rated Clinic" },
@@ -96,24 +112,24 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Image with Overlay */}
-          <div className="relative h-[420px] lg:h-[480px] animate-fadeInUp delay-200">
+          <div className="relative h-[480px] animate-fadeInUp delay-200 rounded-xl overflow-hidden">
 
             <Image
               src="/hero-bg.png"
               alt="Premium Dental Care"
-              fill
-              className="object-cover rounded-xl"
+              width={600}
+              height={480}
+              className="w-full h-full object-cover"
               priority
             />
 
             {/* subtle overlays */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-medical-blue/40 via-transparent to-transparent rounded-xl" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark/60 rounded-xl" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-medical-blue/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark/60" />
 
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 }

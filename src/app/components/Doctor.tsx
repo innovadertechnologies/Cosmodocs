@@ -2,58 +2,66 @@ import Image from "next/image";
 
 export default function Doctor() {
   return (
-    <section className="py-5 relative overflow-hidden" id="doctor">
-      <div className="max-w-[1400px] mx-auto px-6 flex flex-col lg:flex-row gap-24 items-center relative z-10">
-        {/* Left: Image with Badges */}
-        <div className="lg:w-1/2 flex justify-center animate-fadeInUp">
+    <section className="pt-10 pb-4 md:pt-14 md:pb-6 lg:pt-16 lg:pb-8 relative overflow-hidden" id="doctor">
+      <div className="w-full flex flex-col lg:flex-row items-center justify-between 
+                  gap-6 md:gap-10 lg:gap-16 
+                  px-4 sm:px-6 md:px-10 lg:px-12 xl:px-20">
+
+        {/* Left */}
+        <div className="w-full lg:w-[48%] flex justify-center">
           <div className="relative group">
-            {/* Decorative Background Glow */}
-            <div className="absolute -inset-10 bg-medical-blue/10 rounded-full blur-[100px] group-hover:bg-medical-blue/20 transition-all duration-700" />
+
+            {/* Glow */}
+            <div className="absolute -inset-6 md:-inset-10 bg-medical-blue/10 rounded-full blur-[80px] md:blur-[100px]" />
 
             <Image
               src="/doctor-ankita.png"
               alt="Dr. Ankita Gupta - Expert Dental Surgeon"
               width={460}
               height={560}
-              className="relative z-10 object-cover group-hover:scale-105 transition-transform duration-700 rounded-[40px]"
+              className="relative z-10 object-cover 
+                     w-[260px] sm:w-[300px] md:w-[380px] lg:w-[460px]
+                     h-auto 
+                     rounded-[24px] md:rounded-[40px]
+                     group-hover:scale-105 transition-transform duration-700"
               priority
             />
           </div>
         </div>
 
-        {/* Right: Content */}
-        <div className="lg:w-1/2 animate-fadeInUp delay-300">
-          {/* <div className="inline-block bg-medical-blue/10 text-medical-blue px-4 py-1.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase mb-8 border border-medical-blue/20">
-            About Our Expert
-          </div> */}
-          <h2 className="text-4xl md:text-6xl font-serif font-bold text-medical-blue mb-8 leading-tight">
-            Meet Your <br />
-            <span className="text-medical-blue italic">Dental Expert.</span>
+        {/* Right */}
+        <div className="w-full lg:w-[48%] animate-fadeInUp text-center lg:text-left">
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-serif font-bold text-medical-blue 
+                     mb-4 md:mb-6 leading-tight">
+            Meet Your Dental Expert
           </h2>
 
-          <div className="mb-12">
-            <h3 className="text-3xl font-serif font-bold text-medical-blue mb-2">Dr. Ankita Gupta</h3>
-            <p className="text-medical-blue font-bold uppercase tracking-widest text-xs">Senior Dental Surgeon | Cosmodocs Gurgaon</p>
+          <div className="mb-6 md:mb-8">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-medical-blue mb-1">
+              Dr. Ankita Gupta
+            </h3>
+            <p className="text-medical-blue font-bold uppercase tracking-widest text-[10px] pt-2 sm:text-xs">
+              Senior Dental Surgeon | Cosmodocs Gurgaon
+            </p>
           </div>
 
-          <div className="space-y-6 mb-12">
-            {/* Removed medical blue icons from here */}
+          <div className="space-y-3 md:space-y-5">
             {[
-              "Expertise in Advanced Implantology",
-              "Gold Standard Painless RCT Specialist",
-              "Artistic Approach to Smile Makeovers",
-              "15+ Years of Clinical Excellence",
+              "Expertise in Dental Implants, RCT & Smile Makeover",
+              "Focus on painless & comfortable treatment",
+              "Personalized care for every patient",
+              "Trusted by hundreds of happy patient",
             ].map((item) => (
-              <div className="flex items-center gap-5 group" key={item}>
-                <div className="w-2.5 h-2.5 rounded-full bg-lemon-green shadow-[0_0_10px_rgba(181,211,51,0.5)] shrink-0" />
-                <span className="text-medical-blue font-medium md:text-lg">{item}</span>
+              <div className="flex items-center justify-center lg:justify-start gap-3 md:gap-4" key={item}>
+                <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-lemon-green shrink-0" />
+                <span className="text-medical-blue text-sm sm:text-base md:text-lg">
+                  {item}
+                </span>
               </div>
             ))}
           </div>
 
-
-
-          {/* Removed CTA button as it contained medical blue text */}
         </div>
       </div>
     </section>

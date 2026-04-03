@@ -32,23 +32,26 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 relative" id="faq">
-      <div className="container mx-auto px-6 flex flex-col lg:flex-row gap-24 relative z-10">
+    <section className="py-4 relative" id="faq">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-20 flex flex-col lg:flex-row gap-10 lg:gap-24 relative z-10">
         {/* Left: Info */}
         <div className="lg:w-7/12 animate-fadeInUp">
-          <h2 className="text-4xl md:text-6xl font-serif font-bold text-medical-blue mb-8 leading-tight">
-            Everything You <br />
-            <span className="text-lemon-green italic">Need To Know</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-6xl font-serif font-bold text-medical-blue mb-4 lg:mb-8 leading-tight whitespace-nowrap lg:whitespace-normal">
+            Everything You <br className="hidden lg:block" />
+            <span className="text-lemon-green italic lg:whitespace-nowrap">Need To Know</span>
           </h2>
-          <p className="text-medical-blue/70 text-lg mb-12 leading-relaxed max-w-xl">
+          <p className="text-medical-blue/70 text-sm lg:text-lg mb-2 lg:mb-12 leading-relaxed max-w-xl">
             Clear your doubts before starting your dental treatment at Cosmodocs. We ensure safe, painless, and advanced care for every patient.
           </p>
 
           <a
             href="#contact"
-            className="group inline-flex items-center gap-4 bg-lemon-green text-medical-blue px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/20 hover:scale-105 active:scale-95 transition-all"
+            className="hidden lg:flex w-fit group items-center gap-3 bg-lemon-green text-medical-blue px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all"
           >
-            Book Your Consultation Today →
+            Book Your Consultation Today
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
         </div>
 
@@ -90,16 +93,7 @@ export default function FAQ() {
             </div>
           ))}
 
-          {/* Contact Line
-          <div className="pt-12 text-center animate-fadeInUp delay-500">
-            <p className="text-medical-blue/30 font-bold uppercase tracking-[0.3em] text-[10px] mb-6">Need more clarity?</p>
-            <a
-              href="tel:9958389360"
-              className="group inline-flex items-center gap-4 bg-medical-blue/5 backdrop-blur-md px-10 py-5 rounded-full font-bold text-medical-blue border border-medical-blue/10 hover:bg-medical-blue hover:text-white transition-all"
-            >
-              📞 9958389360
-            </a>
-          </div> */}
+
         </div>
       </div>
     </section>

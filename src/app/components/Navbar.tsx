@@ -25,16 +25,17 @@ export default function Navbar() {
     <>
       {<nav
         className="fixed top-0 left-0 right-0 z-[100]">
-        <div className={`h-20 flex  items-center justify-between transition-all duration-500 glass-card py-2.5 px-6 ${scrolled ? "shadow-lemon-green/10" : "shadow-md"
+        <div className={`h-20 flex items-center justify-between transition-all duration-500 glass-card py-2.5 px-4 lg:px-6 ${scrolled ? "shadow-lemon-green/10" : "shadow-md"
           }`}>
           {/* Logo */}
-          <a href="#hero" className="flex items-center ml-6 gap-2 group">
-            <div className="relative w-16 h-16 rounded-full overflow-hidden bg-white p-1 shadow-md transition-all duration-300 group-hover:scale-105 ">
+          <a href="#hero" className="flex items-center ml-2 lg:ml-6 gap-2 group">
+            <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full overflow-hidden transition-all duration-300 group-hover:scale-105 flex items-center justify-center">
               <Image
                 src="/cosmodocs_logo.png"
                 alt="Cosmodocs Logo"
-                fill
-                className="object-contain"
+                width={56}
+                height={56}
+                className="object-contain rounded-full"
                 priority
               />
             </div>
@@ -49,9 +50,8 @@ export default function Navbar() {
               <li key={link.label}>
                 <a
                   href={link.href}
-                  className={`text-xs font-bold uppercase tracking-wider hover:text-lemon-green transition-colors ${
-                    scrolled ? "text-medical-blue" : "text-white/70"
-                  }`}
+                  className={`text-xs font-bold uppercase tracking-wider hover:text-lemon-green transition-colors ${scrolled ? "text-medical-blue" : "text-white/70"
+                    }`}
                 >
                   {link.label}
                 </a>
@@ -72,13 +72,13 @@ export default function Navbar() {
             </a> */}
             <a
               href="#contact"
-              className="bg-lemon-green text-medical-blue px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg shadow-lemon-green/20 hover:scale-105 active:scale-95 transition-all"
+              className="bg-lemon-green text-medical-blue px-6 py-2 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-widest shadow-lg shadow-lemon-green/20 hover:scale-105 active:scale-95 transition-all"
             >
               Book Now
             </a>
 
             {/* Hamburger */}
-            <button
+            {/* <button
               className="lg:hidden flex flex-col gap-1.5 p-2"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
@@ -86,7 +86,7 @@ export default function Navbar() {
               <div className={`w-6 h-0.5 transition-all bg-white ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
               <div className={`w-6 h-0.5 transition-all bg-white ${menuOpen ? "opacity-0" : ""}`} />
               <div className={`w-6 h-0.5 transition-all bg-white ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-            </button>
+            </button> */}
           </div>
         </div>
       </nav>}
