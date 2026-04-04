@@ -14,7 +14,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <main>
-        <div className="relative z-10 mt-[-40px] px-4">
+        <div className="relative z-10 md:mt-[-40px] px-4">
 
           {/* SOFT DARK GLOW */}
           <div className="absolute inset-0 max-w-[1200px] mx-auto rounded-[40px] bg-black/20 blur-2xl -z-10" />
