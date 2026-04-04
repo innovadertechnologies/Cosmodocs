@@ -79,20 +79,17 @@ export default function Hero() {
           </svg>
         </a>
 
-        {/* Stats - compact inline row */}
-        <div className="flex items-center justify-between gap-1 animate-fadeInUp">
+        {/* Stats - glass card grid like desktop */}
+        <div className="grid grid-cols-4 gap-2 animate-fadeInUp">
           {[
             { val: "500+", lab: "Patients" },
             { val: "4.7★", lab: "Rated" },
             { val: "High", lab: "Success" },
             { val: "Expert", lab: "Dentists" },
-          ].map((s, i) => (
-            <div key={s.lab} className="flex items-center gap-1">
-              <div className="text-center">
-                <div className="text-xs font-bold text-lemon-green leading-none">{s.val}</div>
-                <div className="text-[9px] uppercase text-white/50 font-semibold leading-tight">{s.lab}</div>
-              </div>
-              {i < 3 && <div className="w-px h-6 bg-white/20 ml-1" />}
+          ].map((s) => (
+            <div key={s.lab} className="glass-card p-2 rounded-lg border border-white/10 flex flex-col items-center text-center justify-center min-h-[52px]">
+              <div className="text-xs font-serif font-bold text-lemon-green leading-tight">{s.val}</div>
+              <div className="text-[8px] uppercase tracking-wide text-white/50 font-bold leading-tight mt-0.5">{s.lab}</div>
             </div>
           ))}
         </div>
@@ -106,9 +103,9 @@ export default function Hero() {
             zoom: scale,
             margin: "0 auto",
           }}
-          className="min-h-screen flex items-center px-6 relative z-10 pb-12"
+          className="min-h-screen flex items-center px-10 relative z-10 pb-12"
         >
-          <div className="grid grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-[44%_56%] gap-16 items-center w-full">
             {/* Left Column: Content */}
             <div className="flex flex-col items-start text-left">
 
@@ -193,7 +190,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="relative h-[480px] animate-fadeInUp delay-200 rounded-xl overflow-hidden">
+            <div className="relative h-[480px] animate-fadeInUp delay-200 rounded-xl overflow-hidden ml-auto w-full">
 
               <Image
                 src="/hero-bg.png"

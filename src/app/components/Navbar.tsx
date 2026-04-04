@@ -25,7 +25,7 @@ export default function Navbar() {
     <>
       {<nav
         className="fixed top-0 left-0 right-0 z-[100]">
-        <div className={`h-20 flex items-center justify-between transition-all duration-500 glass-card py-2.5 px-4 lg:px-6 ${scrolled ? "shadow-lemon-green/10" : "shadow-md"
+        <div className={`h-16 flex items-center justify-between transition-all duration-500 glass-card py-2.5 px-3 sm:px-4 lg:px-6 ${scrolled ? "shadow-lemon-green/10" : "shadow-md"
           }`}>
           {/* Logo */}
           <a href="#hero" className="flex items-center ml-2 lg:ml-6 gap-2 group">
@@ -72,7 +72,7 @@ export default function Navbar() {
             </a> */}
             <a
               href="#contact"
-              className="bg-lemon-green text-medical-blue px-6 py-2 rounded-full font-bold text-[10px] sm:text-xs uppercase tracking-widest shadow-lg shadow-lemon-green/20 hover:scale-105 active:scale-95 transition-all"
+              className="bg-lemon-green text-medical-blue px-4 sm:px-6 py-2 rounded-full font-bold text-[10px] uppercase tracking-wide sm:tracking-widest shadow-lg shadow-lemon-green/20 hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
             >
               Book Now
             </a>
