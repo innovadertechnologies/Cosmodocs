@@ -178,19 +178,10 @@ export default function BeforeAfter() {
   return (
     <div className="mt-12 animate-fadeInUp">
       {/* Section Header */}
-      <div className="text-center max-w-2xl mx-auto mb-14">
-        {/* <div className="inline-flex items-center gap-2 bg-medical-blue/5 border border-medical-blue/10 px-4 py-2 rounded-full mb-5">
-          <span className="text-base">✨</span>
-          <span className="text-medical-blue text-[10px] font-bold tracking-[0.2em] uppercase">
-            Real Results
-          </span>
-        </div> */}
-        <h2 className="text-3xl md:text-4xl font-serif font-bold text-medical-blue leading-tight mb-4">
+      <div className="text-center max-w-2xl mx-auto mb-6">
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-medical-blue leading-tight">
           See the Transformation
         </h2>
-        <p className="text-medical-blue/60 text-base md:text-lg">
-          Drag the slider to reveal stunning before &amp; after results from our patients.
-        </p>
       </div>
 
       {/* Comparison Grid */}

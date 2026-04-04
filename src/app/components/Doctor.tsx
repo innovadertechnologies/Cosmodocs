@@ -46,20 +46,22 @@ export default function Doctor() {
             </p>
           </div>
 
-          <div className="space-y-3 md:space-y-5">
-            {[
-              "Expertise in Dental Implants, RCT & Smile Makeover",
-              "Focus on painless & comfortable treatment",
-              "Personalized care for every patient",
-              "Trusted by hundreds of happy patient",
-            ].map((item) => (
-              <div className="flex items-center justify-center lg:justify-start gap-3 md:gap-4" key={item}>
-                <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-lemon-green shrink-0" />
-                <span className="text-medical-blue text-sm sm:text-base md:text-lg">
-                  {item}
-                </span>
-              </div>
-            ))}
+          <div className="flex justify-center lg:justify-start">
+            <div className="space-y-3 md:space-y-5 inline-block text-left">
+              {[
+                "Expertise in Dental Implants, RCT & Smile Makeover",
+                "Focus on painless & comfortable treatment",
+                "Personalized care for every patient",
+                "Trusted by hundreds of happy patient",
+              ].map((item) => (
+                <div className="flex items-start justify-start gap-3 md:gap-4" key={item}>
+                  <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-lemon-green shrink-0 mt-1.5 md:mt-2" />
+                  <span className="text-medical-blue text-sm sm:text-base md:text-lg leading-snug md:leading-normal">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
