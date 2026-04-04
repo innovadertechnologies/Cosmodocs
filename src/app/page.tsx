@@ -7,6 +7,7 @@ import SocialProof from "./components/SocialProof";
 import LeadForm from "./components/LeadForm";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
+import PopupContactForm from "./components/PopupContactForm";
 
 export default function Home() {
   return (
@@ -40,6 +41,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <PopupContactForm />
 
       {/* WhatsApp Float Button */}
       <a
