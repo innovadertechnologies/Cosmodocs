@@ -110,7 +110,7 @@ export default function Services() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 xl:gap-6 px-0">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 px-0">
           {services.map((service, index) => (
             <div
               key={service.title}
