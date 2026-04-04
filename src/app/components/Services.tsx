@@ -95,7 +95,7 @@ const services = [
 export default function Services() {
   return (
     <section className="pt-4 pb-4 relative overflow-hidden" id="services">
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-0 md:px-6 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 md:mb-20 animate-fadeInUp">
           <div className="inline-block text-medical-blue px-2 md:px-4 py-1.5 text-xl sm:text-2xl md:text-3xl font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase mb-2 md:mb-3 whitespace-nowrap">
@@ -110,7 +110,7 @@ export default function Services() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 px-2 md:px-0">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 xl:gap-6 px-0">
           {services.map((service, index) => (
             <div
               key={service.title}
