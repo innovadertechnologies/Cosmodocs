@@ -6,20 +6,20 @@ const comparisons = [
   {
     title: "Dental Veneers",
     subtitle: "Smile Transformation",
-    beforeImage: "", // User will add image path
-    afterImage: "",  // User will add image path
+    beforeImage: "/veener before.PNG",
+    afterImage: "/veener after.PNG",
   },
   {
-    title: "Teeth Whitening",
-    subtitle: "Instant Brightness",
-    beforeImage: "",
-    afterImage: "",
+    title: "Smile Makeover",
+    subtitle: "Complete Smile Transformation",
+    beforeImage: "/smile makeover before.jpeg",
+    afterImage: "/smile makeover after.jpeg",
   },
   {
-    title: "Full Mouth Rehabilitation",
-    subtitle: "Complete Restoration",
-    beforeImage: "",
-    afterImage: "",
+    title: "Dental Implants",
+    subtitle: "Restoring Your Smile",
+    beforeImage: "/dental implant before.PNG",
+    afterImage: "/dental implant after.PNG",
   },
 ];
 
@@ -68,17 +68,17 @@ function ComparisonCard({
 
   // Placeholder backgrounds when no image is set
   const beforeBg = beforeImage
-    ? `url(${beforeImage})`
+    ? `url("${beforeImage}")`
     : "linear-gradient(135deg, #374151 0%, #1f2937 100%)";
   const afterBg = afterImage
-    ? `url(${afterImage})`
+    ? `url("${afterImage}")`
     : "linear-gradient(135deg, #1e3a5f 0%, #0f766e 100%)";
 
   return (
     <div className="group">
       <div
         ref={containerRef}
-        className="relative w-full h-[340px] rounded-2xl overflow-hidden cursor-col-resize shadow-[0_8px_30px_rgba(0,0,0,0.2)] group-hover:shadow-[0_16px_50px_rgba(0,0,0,0.3)] transition-shadow duration-500 border border-white/10"
+        className="relative w-full aspect-[4/3] md:aspect-[5/4] lg:aspect-[4/3] rounded-2xl overflow-hidden cursor-col-resize shadow-[0_8px_30px_rgba(0,0,0,0.2)] group-hover:shadow-[0_16px_50px_rgba(0,0,0,0.3)] transition-shadow duration-500 border border-white/10"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}

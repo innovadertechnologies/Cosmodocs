@@ -13,17 +13,16 @@ export default function Doctor() {
 
             {/* Glow */}
             <div className="absolute -inset-6 md:-inset-10 bg-medical-blue/10 rounded-full blur-[80px] md:blur-[100px]" />
-
             <Image
-              src="/doctor-ankita.png"
+              src="/dr_ankita.png"
               alt="Dr. Ankita Gupta - Expert Dental Surgeon"
               width={460}
               height={560}
-              className="relative z-10 object-cover 
-                     w-[260px] sm:w-[300px] md:w-[380px] lg:w-[460px]
-                     h-auto 
-                     rounded-[24px] md:rounded-[40px]
-                     group-hover:scale-105 transition-transform duration-700"
+              className="relative z-10 object-contain 
+             w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[380px]
+             h-auto max-h-[300px] sm:max-h-[350px] md:max-h-[400px] lg:max-h-[450px]
+             rounded-[24px] md:rounded-[40px]
+             group-hover:scale-105 transition-transform duration-700"
               priority
             />
           </div>

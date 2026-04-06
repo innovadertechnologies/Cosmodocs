@@ -90,6 +90,28 @@ const services = [
       "Builds healthy dental habits early",
     ],
   },
+  {
+    image: "/tooth_extraction.jpg",
+    title: "Painless Wisdom Tooth Extraction",
+    subtitle: "Safe & Advanced Surgical Procedure",
+    features: [
+      "Safe & advanced surgical procedure",
+      "Minimal pain & quick recovery",
+      "Ideal for impacted or painful wisdom teeth",
+      "Expert surgical team",
+    ],
+  },
+  {
+    image: "/dentures.jpg",
+    title: "Dentures",
+    subtitle: "Restore Your Smile with Dentures",
+    features: [
+      "Replace missing teeth comfortably",
+      "Natural look & improved chewing",
+      "Full & partial options available",
+      "Affordable & reliable solution",
+    ],
+  },
 ];
 
 export default function Services() {

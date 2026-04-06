@@ -13,18 +13,12 @@ const treatments = [
   "General Consultation",
 ];
 
-const timeSlots = [
-  "Morning (9am – 12pm)",
-  "Afternoon (12pm – 3pm)",
-  "Evening (5pm – 8pm)",
-];
 
 export default function LeadForm() {
   const [form, setForm] = useState({
     name: "",
     phone: "",
     treatment: "",
-    time: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -93,9 +87,9 @@ export default function LeadForm() {
                 </p>
                 <button
                   className="bg-white/5 border border-white/10 text-white px-5 py-3 sm:px-8 sm:py-4 rounded-lg sm:rounded-xl font-bold text-xs sm:text-sm hover:bg-lemon-green hover:text-medical-blue hover:border-lemon-green transition-all active:scale-95 shadow-2xl"
-                  onClick={() => { setSubmitted(false); setForm({ name: "", phone: "", treatment: "", time: "" }); }}
+                  onClick={() => { setSubmitted(false); setForm({ name: "", phone: "", treatment: "" }); }}
                 >
-                  Book New Slot
+                  Book Again
                 </button>
               </div>
             ) : (
@@ -131,40 +125,21 @@ export default function LeadForm() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4 md:gap-5">
-                    <div className="space-y-1.5 sm:space-y-2">
-                      <label htmlFor="treatment" className="text-[9px] lg:text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] px-1">Concern</label>
-                      <select
-                        id="treatment"
-                        name="treatment"
-                        className="w-full bg-white/[0.03] border border-white/5 p-3 sm:p-3.5 md:p-4 rounded-lg sm:rounded-xl md:rounded-2xl focus:ring-2 focus:ring-lemon-green/20 focus:bg-white/[0.06] transition-all outline-none text-white font-medium appearance-none text-xs sm:text-sm"
-                        value={form.treatment}
-                        onChange={handleChange}
-                        required
-                      >
-                        <option value="" className="bg-medical-blue">Select</option>
-                        {treatments.map((t) => (
-                          <option key={t} value={t} className="bg-medical-blue">{t}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="space-y-1.5 sm:space-y-2">
-                      <label htmlFor="time" className="text-[9px] lg:text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] px-1">Prefered Slot</label>
-                      <select
-                        id="time"
-                        name="time"
-                        className="w-full bg-white/[0.03] border border-white/5 p-3 sm:p-3.5 md:p-4 rounded-lg sm:rounded-xl md:rounded-2xl focus:ring-2 focus:ring-lemon-green/20 focus:bg-white/[0.06] transition-all outline-none text-white font-medium appearance-none text-xs sm:text-sm"
-                        value={form.time}
-                        onChange={handleChange}
-                        required
-                      >
-                        <option value="" className="bg-medical-blue">Select</option>
-                        {timeSlots.map((t) => (
-                          <option key={t} value={t} className="bg-medical-blue">{t}</option>
-                        ))}
-                      </select>
-                    </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label htmlFor="treatment" className="text-[9px] lg:text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] px-1">Concern</label>
+                    <select
+                      id="treatment"
+                      name="treatment"
+                      className="w-full bg-white/[0.03] border border-white/5 p-3 sm:p-3.5 md:p-4 rounded-lg sm:rounded-xl md:rounded-2xl focus:ring-2 focus:ring-lemon-green/20 focus:bg-white/[0.06] transition-all outline-none text-white font-medium appearance-none text-xs sm:text-sm"
+                      value={form.treatment}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="" className="bg-medical-blue">Select</option>
+                      {treatments.map((t) => (
+                        <option key={t} value={t} className="bg-medical-blue">{t}</option>
+                      ))}
+                    </select>
                   </div>
 
                   <button
@@ -176,7 +151,7 @@ export default function LeadForm() {
                       <span className="w-5 h-5 border-4 border-medical-blue/30 border-t-medical-blue rounded-full animate-spin" />
                     ) : (
                       <>
-                        Request Priority Slot
+                        Request Consultation
                         <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-medical-blue text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                             <path d="M5 12h14M12 5l7 7-7 7" />

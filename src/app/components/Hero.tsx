@@ -33,7 +33,7 @@ export default function Hero() {
         {/* Hero image */}
         <div className="relative w-full h-48 rounded-2xl overflow-hidden animate-fadeInUp">
           <Image
-            src="/hero-bg.png"
+            src="/cosmodocs_hero_banner.png"
             alt="Premium Dental Care"
             width={600}
             height={480}
@@ -87,9 +87,9 @@ export default function Hero() {
             { val: "High", lab: "Success" },
             { val: "Expert", lab: "Dentists" },
           ].map((s) => (
-            <div key={s.lab} className="glass-card p-2 rounded-lg border border-white/10 flex flex-col items-center text-center justify-center min-h-[52px]">
-              <div className="text-xs font-serif font-bold text-lemon-green leading-tight">{s.val}</div>
-              <div className="text-[8px] uppercase tracking-wide text-white/50 font-bold leading-tight mt-0.5">{s.lab}</div>
+            <div key={s.lab} className="glass-card p-2 rounded-lg border border-white/10 flex flex-col items-center text-center justify-center min-h-[60px]">
+              <div className="text-sm font-serif font-bold text-lemon-green leading-tight">{s.val}</div>
+              <div className="text-[10px] uppercase tracking-wide text-white/60 font-bold leading-tight mt-0.5">{s.lab}</div>
             </div>
           ))}
         </div>
@@ -193,7 +193,7 @@ export default function Hero() {
             <div className="relative h-[480px] animate-fadeInUp delay-200 rounded-xl overflow-hidden ml-auto w-full">
 
               <Image
-                src="/hero-bg.png"
+                src="/cosmodocs_hero_banner.png"
                 alt="Premium Dental Care"
                 width={600}
                 height={480}
