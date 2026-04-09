@@ -6,8 +6,8 @@ export default function Testimonials() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-medical-blue mb-4 tracking-tight leading-tight">
             Patient Stories
           </h2>
-          <p className="text-medical-blue/80 max-w-2xl mx-auto text-lg px-4">
-            Hear directly from our patients about their experiences and smile transformations with Cosmodocs.
+          <p className="text-medical-blue/80 max-w-[320px] md:max-w-2xl mx-auto text-base md:text-lg px-2 leading-tight md:leading-normal">
+            Hear directly from our patients about their experiences <br className="block md:hidden" /> and smile transformations with Cosmodocs.
           </p>
         </div>
 
