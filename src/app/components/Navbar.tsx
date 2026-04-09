@@ -21,14 +21,37 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    
+    if (href.startsWith('#')) {
+      const targetId = href.replace('#', '');
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        const offset = 80;
+        const elementPosition = elem.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }
+  };
+
   return (
     <>
-      {<nav
-        className="fixed top-0 left-0 right-0 z-[100]">
+      <nav className="fixed top-0 left-0 right-0 z-[100]">
         <div className={`h-16 flex items-center justify-between transition-all duration-500 glass-card py-2.5 px-3 sm:px-4 lg:px-6 ${scrolled ? "shadow-lemon-green/10" : "shadow-md"
           }`}>
           {/* Logo */}
-          <a href="#hero" className="flex items-center ml-2 lg:ml-6 gap-2 group">
+          <a 
+            href="#hero" 
+            onClick={(e) => scrollToSection(e, "#hero")}
+            className="flex items-center ml-2 lg:ml-6 gap-2 group"
+          >
             <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full overflow-hidden transition-all duration-300 group-hover:scale-105 flex items-center justify-center">
               <Image
                 src="/cosmodocs_logo.png"
@@ -39,9 +62,6 @@ export default function Navbar() {
                 priority
               />
             </div>
-            {/* <span className="font-serif font-bold text-lg tracking-tight hidden sm:block text-white">
-              Cosmodocs
-            </span> */}
           </a>
 
           {/* Desktop Nav */}
@@ -50,6 +70,7 @@ export default function Navbar() {
               <li key={link.label}>
                 <a
                   href={link.href}
+                  onClick={(e) => scrollToSection(e, link.href)}
                   className={`text-xs font-bold uppercase tracking-wider hover:text-lemon-green transition-colors ${scrolled ? "text-medical-blue" : "text-white/70"
                     }`}
                 >
@@ -61,64 +82,69 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            {/* <a
-              href="tel:9958389360"
-              className="hidden md:flex items-center gap-2 text-sm font-bold text-white/90 hover:text-lemon-green transition-colors"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z" />
-              </svg>
-              <span className="hidden lg:inline">9958389360</span>
-            </a> */}
             <a
               href="#contact"
+              onClick={(e) => scrollToSection(e, "#contact")}
               className="bg-lemon-green text-medical-blue px-4 sm:px-6 py-2 rounded-full font-bold text-[10px] uppercase tracking-wide sm:tracking-widest shadow-lg shadow-lemon-green/20 hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
             >
               Book Now
             </a>
 
             {/* Hamburger */}
-            {/* <button
+            <button
               className="lg:hidden flex flex-col gap-1.5 p-2"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
             >
-              <div className={`w-6 h-0.5 transition-all bg-white ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-              <div className={`w-6 h-0.5 transition-all bg-white ${menuOpen ? "opacity-0" : ""}`} />
-              <div className={`w-6 h-0.5 transition-all bg-white ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-            </button> */}
+              {(() => {
+                const hamburgerColorClass = !menuOpen && scrolled ? "bg-medical-blue" : "bg-white";
+                return (
+                  <>
+                    <div className={`w-6 h-0.5 transition-all ${hamburgerColorClass} ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+                    <div className={`w-6 h-0.5 transition-all ${hamburgerColorClass} ${menuOpen ? "opacity-0" : ""}`} />
+                    <div className={`w-6 h-0.5 transition-all ${hamburgerColorClass} ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+                  </>
+                );
+              })()}
+            </button>
           </div>
         </div>
-      </nav>}
+      </nav>
 
-      {/* Mobile Menu */}
-      <div className={`fixed inset-0 z-[90] bg-white transition-transform duration-500 lg:hidden ${menuOpen ? "translate-x-0" : "translate-x-full"
+      {/* Premium Mobile Menu */}
+      <div className={`fixed inset-0 z-[90] bg-[#1a2f4d]/95 backdrop-blur-2xl transition-all duration-500 lg:hidden ${menuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}>
-        <div className="flex flex-col h-full pt-24 pb-10 px-8">
-          <ul className="flex flex-col gap-6">
-            {navLinks.map((link) => (
-              <li key={link.label}>
+        
+        {/* Decorative glows inside menu */}
+        <div className="absolute top-0 right-0 w-[80vw] h-[80vw] bg-lemon-green/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
+        <div className="absolute bottom-0 left-[-20%] w-[80vw] h-[80vw] bg-[#1e3a5f]/40 rounded-full blur-[120px] -z-10 pointer-events-none" />
+
+        <div className={`flex flex-col h-full pt-32 pb-12 px-8 sm:px-12 transition-transform duration-500 ${menuOpen ? "translate-x-0" : "translate-x-12"}`}>
+          <ul className="flex flex-col gap-6 sm:gap-8">
+            {navLinks.map((link, index) => (
+              <li 
+                key={link.label}
+                className={`transform transition-all duration-500 ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                style={{ transitionDelay: `${100 + index * 100}ms` }}
+              >
                 <a
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="text-2xl font-serif font-bold text-medical-blue hover:text-lemon-green transition-colors"
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="group flex items-center w-fit text-4xl sm:text-5xl font-serif font-bold text-white hover:text-lemon-green transition-all"
                 >
+                  <span className="w-0 h-1 bg-lemon-green group-hover:w-8 sm:group-hover:w-12 transition-all duration-300 mr-0 group-hover:mr-4 sm:group-hover:mr-6 rounded-full opacity-0 group-hover:opacity-100"></span>
                   {link.label}
                 </a>
               </li>
             ))}
           </ul>
 
-          <div className="mt-auto flex flex-col gap-4">
-            <a
-              href="tel:9958389360"
-              className="flex items-center justify-center gap-3 bg-medical-blue text-white py-4 rounded-2xl font-bold transition-transform active:scale-95 shadow-lg shadow-blue-900/20"
-            >
-              📞 9958389360
-            </a>
-            <div className="text-center text-gray-500 text-sm italic">
-              Available Mon-Sat: 10am-8pm
-            </div>
+          <div 
+            className={`mt-auto transform transition-all duration-700 border-t border-white/10 pt-8 ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            style={{ transitionDelay: "700ms" }}
+          >
+            <p className="text-white/60 text-sm font-medium tracking-widest uppercase">Cosmodocs</p>
+            <p className="text-white/40 text-xs mt-2">Premium Dental & Aesthetics</p>
           </div>
         </div>
       </div>
