@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import FamilyCard from "./components/FamilyCard";
 import WhyUs from "./components/WhyUs";
 import Doctor from "./components/Doctor";
 import SocialProof from "./components/SocialProof";
@@ -28,6 +29,7 @@ export default function Home() {
 
 
               <Services />
+              <FamilyCard />
               <WhyUs />
               <Doctor />
               <Testimonials />
