@@ -22,17 +22,53 @@ export default function LeadForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    if (errorMsg) setErrorMsg("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!form.name || !form.phone || !form.treatment) {
+      setErrorMsg("Please fill in all fields.");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(form.phone)) {
+      setErrorMsg("Please enter a valid 10-digit phone number.");
+      return;
+    }
+
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    setErrorMsg("");
+
+    try {
+      const response = await fetch('/api/form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: form.name,
+          phone: form.phone,
+          concern: form.treatment
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitted(true);
+        // Form state is retained untill explicitly closed or requested cleanly
+      } else {
+        setErrorMsg(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setErrorMsg("Failed to connect to the server. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -78,12 +114,9 @@ export default function LeadForm() {
 
             {submitted ? (
               <div className="text-center py-6 sm:py-10">
-                <div className="w-14 h-14 sm:w-20 sm:h-20 bg-lemon-green/10 text-lemon-green rounded-full flex items-center justify-center text-2xl sm:text-4xl mx-auto mb-4 sm:mb-6 border border-lemon-green/20 animate-float">
-                  ✨
-                </div>
-                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-3 sm:mb-4">Success!</h3>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-3 sm:mb-4">Thank you!</h3>
                 <p className="text-white/50 mb-5 sm:mb-8 text-sm sm:text-base leading-relaxed max-w-xs mx-auto">
-                  Thank you, <strong>{form.name}</strong>! We'll reach out to your phone <strong>{form.phone}</strong> shortly.
+                  Cosmodocs will reach you out soon.
                 </p>
                 <button
                   className="bg-white/5 border border-white/10 text-white px-5 py-3 sm:px-8 sm:py-4 rounded-lg sm:rounded-xl font-bold text-xs sm:text-sm hover:bg-lemon-green hover:text-medical-blue hover:border-lemon-green transition-all active:scale-95 shadow-2xl"
@@ -97,6 +130,12 @@ export default function LeadForm() {
                 <div className="mb-5 sm:mb-6 md:mb-8 text-center">
                   <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-white mb-1.5 sm:mb-2">Fill the form & our team will call you shortly</h3>
                 </div>
+
+                {errorMsg && (
+                  <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg sm:rounded-xl text-red-200 text-xs sm:text-sm text-center animate-fadeInUp">
+                    {errorMsg}
+                  </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6">
                   <div className="space-y-1.5 sm:space-y-2">
