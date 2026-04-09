@@ -4,6 +4,7 @@ import Services from "./components/Services";
 import WhyUs from "./components/WhyUs";
 import Doctor from "./components/Doctor";
 import SocialProof from "./components/SocialProof";
+import Testimonials from "./components/Testimonials";
 import LeadForm from "./components/LeadForm";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
@@ -29,7 +30,7 @@ export default function Home() {
               <Services />
               <WhyUs />
               <Doctor />
-              {/* <SocialProof /> */}
+              <Testimonials />
               <LeadForm />
               <FAQ />
 
