@@ -58,35 +58,28 @@ export default function PopupContactForm() {
     setLoading(true);
     setErrorMsg("");
 
-    try {
-      const response = await fetch('/api/form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: form.name,
-          phone: form.phone,
-          concern: form.treatment
-        }),
-      });
+    // Send request in background 
+    fetch('/api/form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fullName: form.name,
+        phone: form.phone,
+        concern: form.treatment
+      }),
+    }).catch(error => console.error("Submission error:", error));
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setSubmitted(true);
-        // Auto close after 3 seconds of success
-        setTimeout(() => {
-          setIsOpen(false);
-          setHasClosed(true);
-          setForm({ name: "", phone: "", treatment: "" }); // Reset form
-        }, 3000);
-      } else {
-        setErrorMsg(data.error || "Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      setErrorMsg("Failed to connect to the server. Please try again.");
-    } finally {
+    // Optimistically reflect success UI after short delay
+    setTimeout(() => {
       setLoading(false);
-    }
+      setSubmitted(true);
+      // Auto close after 3 seconds of success
+      setTimeout(() => {
+        setIsOpen(false);
+        setHasClosed(true);
+        setForm({ name: "", phone: "", treatment: "" }); // Reset form
+      }, 3000);
+    }, 800);
   };
 
   const handleClose = () => {

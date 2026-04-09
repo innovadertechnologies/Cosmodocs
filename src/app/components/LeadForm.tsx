@@ -45,30 +45,22 @@ export default function LeadForm() {
     setLoading(true);
     setErrorMsg("");
 
-    try {
-      const response = await fetch('/api/form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: form.name,
-          phone: form.phone,
-          concern: form.treatment
-        }),
-      });
+    // Send the request in the background
+    fetch('/api/form', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fullName: form.name,
+        phone: form.phone,
+        concern: form.treatment
+      }),
+    }).catch((error) => console.error("Submission error:", error));
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setSubmitted(true);
-        // Form state is retained untill explicitly closed or requested cleanly
-      } else {
-        setErrorMsg(data.error || "Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      setErrorMsg("Failed to connect to the server. Please try again.");
-    } finally {
+    // Optimistically show success after a short artificial delay
+    setTimeout(() => {
       setLoading(false);
-    }
+      setSubmitted(true);
+    }, 800);
   };
 
   return (
