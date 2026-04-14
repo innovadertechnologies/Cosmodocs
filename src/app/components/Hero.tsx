@@ -33,7 +33,7 @@ export default function Hero() {
         {/* Hero image */}
         <div className="relative w-full h-48 rounded-2xl overflow-hidden animate-fadeInUp">
           <Image
-            src="/cosmodocs_hero_banner.png"
+            src="/hero.jpeg"
             alt="Premium Dental Care"
             width={600}
             height={480}
@@ -193,7 +193,7 @@ export default function Hero() {
             <div className="relative h-[480px] animate-fadeInUp delay-200 rounded-xl overflow-hidden ml-auto w-full">
 
               <Image
-                src="/cosmodocs_hero_banner.png"
+                src="/hero.jpeg"
                 alt="Premium Dental Care"
                 width={600}
                 height={480}
