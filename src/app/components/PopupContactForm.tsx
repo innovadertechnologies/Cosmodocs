@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const treatments = [
   "Dental Implants",
@@ -15,6 +16,7 @@ const treatments = [
 
 
 export default function PopupContactForm() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [hasClosed, setHasClosed] = useState(false);
 
@@ -23,7 +25,6 @@ export default function PopupContactForm() {
     phone: "",
     treatment: "",
   });
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -40,7 +41,6 @@ export default function PopupContactForm() {
   // Allow any component to open the popup by dispatching a custom event
   useEffect(() => {
     const handleOpen = () => {
-      setSubmitted(false);
       setErrorMsg("");
       setIsOpen(true);
     };
@@ -80,16 +80,9 @@ export default function PopupContactForm() {
       }),
     }).catch(error => console.error("Submission error:", error));
 
-    // Optimistically reflect success UI after short delay
+    // Redirect to thank-you page after a short delay
     setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-      // Auto close after 3 seconds of success
-      setTimeout(() => {
-        setIsOpen(false);
-        setHasClosed(true);
-        setForm({ name: "", phone: "", treatment: "" }); // Reset form
-      }, 3000);
+      router.push("/thank-you");
     }, 800);
   };
 
@@ -118,15 +111,7 @@ export default function PopupContactForm() {
         <div className="bg-medical-blue/95 shadow-2xl relative overflow-hidden border border-white/10 rounded-[24px] p-6 sm:p-8">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-lemon-green/50 to-transparent" />
 
-          {submitted ? (
-            <div className="text-center py-6">
-              <h3 className="text-xl font-serif font-bold text-white mb-3">Thank you!</h3>
-              <p className="text-white/60 mb-5 text-sm leading-relaxed">
-                Cosmodocs will reach you out soon.
-              </p>
-            </div>
-          ) : (
-            <>
+          <>
               <div className="mb-6 text-center">
                 <h3 className="text-xl font-serif font-bold text-white mb-2 leading-tight">Get a Free Consultation Today!</h3>
                 <p className="text-white/50 text-xs">Drop your details below and we will call you back.</p>
@@ -202,8 +187,7 @@ export default function PopupContactForm() {
                 </button>
               </form>
             </>
-          )}
-        </div>
+          </div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const treatments = [
   "Dental Implants",
@@ -15,12 +16,12 @@ const treatments = [
 
 
 export default function LeadForm() {
+  const router = useRouter();
   const [form, setForm] = useState({
     name: "",
     phone: "",
     treatment: "",
   });
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -56,10 +57,9 @@ export default function LeadForm() {
       }),
     }).catch((error) => console.error("Submission error:", error));
 
-    // Optimistically show success after a short artificial delay
+    // Redirect to thank-you page after a short delay
     setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
+      router.push("/thank-you");
     }, 800);
   };
 
@@ -104,21 +104,7 @@ export default function LeadForm() {
             {/* Form Accent Glow */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-lemon-green/50 to-transparent" />
 
-            {submitted ? (
-              <div className="text-center py-6 sm:py-10">
-                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mb-3 sm:mb-4">Thank you!</h3>
-                <p className="text-white/50 mb-5 sm:mb-8 text-sm sm:text-base leading-relaxed max-w-xs mx-auto">
-                  Cosmodocs will reach you out soon.
-                </p>
-                <button
-                  className="bg-white/5 border border-white/10 text-white px-5 py-3 sm:px-8 sm:py-4 rounded-lg sm:rounded-xl font-bold text-xs sm:text-sm hover:bg-lemon-green hover:text-medical-blue hover:border-lemon-green transition-all active:scale-95 shadow-2xl"
-                  onClick={() => { setSubmitted(false); setForm({ name: "", phone: "", treatment: "" }); }}
-                >
-                  Book Again
-                </button>
-              </div>
-            ) : (
-              <>
+            <>
                 <div className="mb-5 sm:mb-6 md:mb-8 text-center">
                   <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-white mb-1.5 sm:mb-2">Fill the form & our team will call you shortly</h3>
                 </div>
@@ -192,8 +178,7 @@ export default function LeadForm() {
                     )}
                   </button>
                 </form>
-              </>
-            )}
+            </>
           </div>
         </div>
       </div>
