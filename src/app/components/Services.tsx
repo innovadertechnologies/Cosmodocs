@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import BeforeAfter from "./BeforeAfter";
 
@@ -166,15 +167,15 @@ export default function Services() {
 
         {/* Footer CTA */}
         <div className="mt-10 text-center animate-fadeInUp delay-500">
-          <a
-            href="#contact"
-            className="bg-lemon-green text-medical-blue px-4 py-3 sm:px-6 lg:px-8 lg:py-4 rounded-full font-bold text-[10px] sm:text-xs lg:text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all inline-flex items-center justify-center gap-2 sm:gap-3 max-w-[95vw] mx-auto text-center leading-tight"
+          <button
+            onClick={() => window.dispatchEvent(new Event("openContactPopup"))}
+            className="bg-lemon-green text-medical-blue px-4 py-3 sm:px-6 lg:px-8 lg:py-4 rounded-full font-bold text-[10px] sm:text-xs lg:text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all inline-flex items-center justify-center gap-2 sm:gap-3 max-w-[95vw] mx-auto text-center leading-tight cursor-pointer"
           >
             <span>Choose Your Treatment Now</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="flex-shrink-0">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </button>
         </div>
 
         {/* Before & After Comparison */}

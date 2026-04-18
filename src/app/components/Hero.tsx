@@ -69,15 +69,15 @@ export default function Hero() {
         </div>
 
         {/* CTA */}
-        <a
-          href="#contact"
-          className="bg-lemon-green text-medical-blue px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider shadow-2xl shadow-lemon-green/30 active:scale-95 transition-all flex items-center justify-center gap-2 animate-fadeInUp"
+        <button
+          onClick={() => window.dispatchEvent(new Event("openContactPopup"))}
+          className="bg-lemon-green text-medical-blue px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider shadow-2xl shadow-lemon-green/30 active:scale-95 transition-all flex items-center justify-center gap-2 animate-fadeInUp cursor-pointer"
         >
           Book Your Appointment
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
-        </a>
+        </button>
 
         {/* Stats - glass card grid like desktop */}
         <div className="grid grid-cols-4 gap-2 animate-fadeInUp">
@@ -141,15 +141,15 @@ export default function Hero() {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap items-center gap-6 animate-fadeInUp delay-400">
-                <a
-                  href="#contact"
-                  className="bg-lemon-green text-medical-blue px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-3"
+                <button
+                  onClick={() => window.dispatchEvent(new Event("openContactPopup"))}
+                  className="bg-lemon-green text-medical-blue px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-3 cursor-pointer"
                 >
                   Book Your Appointment Now
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
-                </a>
+                </button>
 
                 <div className="flex items-center gap-4">
                   <a

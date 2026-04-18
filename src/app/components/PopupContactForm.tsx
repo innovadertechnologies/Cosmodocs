@@ -37,6 +37,17 @@ export default function PopupContactForm() {
     return () => clearTimeout(timer);
   }, [hasClosed]);
 
+  // Allow any component to open the popup by dispatching a custom event
+  useEffect(() => {
+    const handleOpen = () => {
+      setSubmitted(false);
+      setErrorMsg("");
+      setIsOpen(true);
+    };
+    window.addEventListener("openContactPopup", handleOpen);
+    return () => window.removeEventListener("openContactPopup", handleOpen);
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     if (errorMsg) setErrorMsg("");
@@ -88,6 +99,7 @@ export default function PopupContactForm() {
   };
 
   if (!isOpen) return null;
+
 
   return (
     <div className="fixed inset-0 z-[1000] flex items-center justify-center px-4 bg-black/60 backdrop-blur-sm transition-opacity duration-300">

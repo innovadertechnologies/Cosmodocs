@@ -1,3 +1,4 @@
+"use client";
 const reasons = [
   "Experienced Dental Experts",
   "Advanced Technology",
@@ -20,15 +21,15 @@ export default function WhyUs() {
               <span className="text-lemon-green">Gurgaon?</span>
             </h2>
 
-            <a
-              href="#contact"
-              className="bg-lemon-green text-medical-blue px-6 py-3 lg:px-8 lg:py-4 rounded-full font-bold text-xs lg:text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all inline-flex items-center gap-3"
+            <button
+              onClick={() => window.dispatchEvent(new Event("openContactPopup"))}
+              className="bg-lemon-green text-medical-blue px-6 py-3 lg:px-8 lg:py-4 rounded-full font-bold text-xs lg:text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all inline-flex items-center gap-3 cursor-pointer"
             >
               Book Consultation
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </a>
+            </button>
           </div>
 
           {/* CENTER */}

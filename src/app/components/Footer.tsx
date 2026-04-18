@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 export default function Footer() {
@@ -39,7 +40,7 @@ export default function Footer() {
             <li><a href="#services" className="hover:text-lemon-green">Services</a></li>
             <li><a href="#why-us" className="hover:text-lemon-green">Why Us</a></li>
             <li><a href="#doctor" className="hover:text-lemon-green">Doctor</a></li>
-            <li><a href="#contact" className="hover:text-lemon-green">Contact</a></li>
+            <li><button onClick={() => window.dispatchEvent(new Event("openContactPopup"))} className="hover:text-lemon-green cursor-pointer">Contact</button></li>
           </ul>
         </div>
 

@@ -44,15 +44,15 @@ export default function FAQ() {
             Clear your doubts before starting your dental treatment at Cosmodocs. We ensure safe, painless, and advanced care for every patient.
           </p>
 
-          <a
-            href="#contact"
-            className="hidden lg:flex w-fit group items-center gap-3 bg-lemon-green text-medical-blue px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all"
+          <button
+            onClick={() => window.dispatchEvent(new Event("openContactPopup"))}
+            className="hidden lg:flex w-fit group items-center gap-3 bg-lemon-green text-medical-blue px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all cursor-pointer"
           >
             Book Your Consultation Today
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </button>
         </div>
 
         {/* Right: Accordion */}
