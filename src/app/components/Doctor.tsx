@@ -212,6 +212,20 @@ export default function Doctor() {
             ))}
           </div>
         </div>
+
+        {/* CTA Button */}
+        <div className="mt-12 flex justify-center">
+          <a
+            href="#contact"
+            className="bg-lemon-green text-medical-blue px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 group"
+          >
+            Book Consultation With Our Experts
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="group-hover:translate-x-1 transition-transform">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
       </div>
     </section>
   );
