@@ -83,13 +83,12 @@ export default function Navbar() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, "#contact")}
-              className="bg-lemon-green text-medical-blue px-4 sm:px-6 py-2 rounded-full font-bold text-[10px] uppercase tracking-wide sm:tracking-widest shadow-lg shadow-lemon-green/20 hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
+            <button
+              onClick={() => window.dispatchEvent(new Event("openContactPopup"))}
+              className="bg-lemon-green text-medical-blue px-4 sm:px-6 py-2 rounded-full font-bold text-[10px] uppercase tracking-wide sm:tracking-widest shadow-lg shadow-lemon-green/20 hover:scale-105 active:scale-95 transition-all whitespace-nowrap cursor-pointer"
             >
               Book Now
-            </a>
+            </button>
 
             {/* Hamburger */}
             <button
