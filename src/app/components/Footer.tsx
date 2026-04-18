@@ -76,7 +76,7 @@ export default function Footer() {
             </a>
 
             <a href="https://www.google.com/maps/place/Cosmodocs+Dental+Clinic+%7C+Best+Dentist+in+Gurugram+%7C+Best+Dental+Care+in+Gurugram+%7C+Smile+Makeover+in+Gurugram/data=!4m2!3m1!1s0x0:0x1acf56d63e9e7446?sa=X&ved=1t:2428&ictx=111" target="_blank" rel="noreferrer" className="flex items-start gap-3 hover:text-lemon-green hover:translate-x-1 transition-all">
-              <span>📍</span> <span>Gurgaon, Haryana, India</span>
+              <span>📍</span> <span>Unit 111, Tulip Chowk, Spaze Corporate Parkk, Sector 69, Gurugram, Haryana 122101, India</span>
             </a>
           </div>
 
