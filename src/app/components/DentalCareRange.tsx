@@ -46,7 +46,7 @@ export default function DentalCareRange() {
     >
       {/* ── Section Header ── */}
       <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14 px-4 animate-fadeInUp">
-        <div className="inline-block text-medical-blue px-2 md:px-4 py-1.5 text-xl sm:text-2xl md:text-3xl font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase mb-2 md:mb-3 whitespace-nowrap">
+        <div className="inline-block text-medical-blue px-2 md:px-4 py-1.5 text-lg sm:text-2xl md:text-3xl font-bold tracking-[0.08em] sm:tracking-[0.15em] md:tracking-[0.2em] uppercase mb-2 md:mb-3 leading-tight">
           Our Dental Care Range
         </div>
         <p className="text-medical-blue/70 text-sm md:text-lg lg:text-xl px-4 md:px-0 hidden md:block">
@@ -55,11 +55,11 @@ export default function DentalCareRange() {
       </div>
 
       {/* ── Product Grid ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-[860px] mx-auto px-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-[860px] mx-auto px-4 sm:px-5 md:px-6">
         {products.map((product, index) => (
           <div
             key={product.name}
-            className="bg-[#1e3a5f] text-white p-5 md:p-8 rounded-[14px] md:rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.25)] group transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)] animate-fadeInUp flex flex-col"
+            className="bg-[#1e3a5f] text-white p-4 sm:p-5 md:p-8 rounded-[14px] md:rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.25)] group transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)] animate-fadeInUp flex flex-col"
             style={{ animationDelay: `${index * 120}ms` }}
           >
             {/* Badge */}
@@ -68,7 +68,7 @@ export default function DentalCareRange() {
             </span>
 
             {/* Product Image */}
-            <div className="w-full h-40 md:h-52 mb-5 md:mb-7 rounded-lg md:rounded-2xl overflow-hidden border border-white/10 group-hover:border-lemon-green/30 transition-all duration-500">
+            <div className="w-full h-36 xs:h-40 md:h-52 mb-4 md:mb-7 rounded-lg md:rounded-2xl overflow-hidden border border-white/10 group-hover:border-lemon-green/30 transition-all duration-500">
               <Image
                 src={product.image}
                 alt={product.name}
