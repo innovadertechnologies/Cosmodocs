@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Script from "next/script";
 
 const REDIRECT_DELAY = 5;
 
@@ -27,7 +28,54 @@ export default function ThankYouPage() {
   }, [countdown, router]);
 
   return (
-    <main className="min-h-screen bg-medical-blue flex items-center justify-center px-4 relative overflow-hidden">
+    <>
+      {/* Google Analytics (gtag.js) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-JV14R6KW97"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JV14R6KW97');
+        `}
+      </Script>
+      {/* Google Tag Manager */}
+      <Script id="google-tag-manager" strategy="afterInteractive">
+        {`
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-P3PZKCGF');
+        `}
+      </Script>
+      {/* Google Ads Conversion Tag */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-18128245000"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-18128245000');
+        `}
+      </Script>
+      {/* Google Tag Manager (noscript) */}
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-P3PZKCGF"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        />
+      </noscript>
+
+      <main className="min-h-screen bg-medical-blue flex items-center justify-center px-4 relative overflow-hidden">
       {/* Background glow blobs */}
       <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-lemon-green/5 blur-[120px] pointer-events-none" />
       <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-lemon-green/5 blur-[120px] pointer-events-none" />
@@ -108,5 +156,6 @@ export default function ThankYouPage() {
         </div>
       </div>
     </main>
+    </>
   );
 }
