@@ -40,6 +40,8 @@ export default function Footer() {
             <li><a href="#services" className="hover:text-lemon-green">Services</a></li>
             <li><a href="#why-us" className="hover:text-lemon-green">Why Us</a></li>
             <li><a href="#doctor" className="hover:text-lemon-green">Doctor</a></li>
+            <li><a href="#leadform" className="hover:text-lemon-green">Contact Us</a></li>
+
             <li><a href="#family-card" className="hover:text-lemon-green">Family Card</a></li>
             <li><button onClick={() => window.dispatchEvent(new Event("openContactPopup"))} className="hover:text-lemon-green cursor-pointer">Contact</button></li>
           </ul>
