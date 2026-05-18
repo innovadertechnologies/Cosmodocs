@@ -1,44 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const DESKTOP_WIDTH = 1280;
+// Note: zoom/resize logic removed — desktop layout uses max-w constraint instead.
+// animate-fadeInUp removed from h1 and hero image (was causing LCP delay by starting opacity:0).
 
 export default function Hero() {
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    function update() {
-      setScale(Math.min(1, window.innerWidth / DESKTOP_WIDTH));
-    }
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
   return (
     <section className="relative overflow-hidden" id="hero">
 
       {/* ── MOBILE LAYOUT (visible only below md) ── */}
       <div className="flex flex-col md:hidden pt-28 pb-10 px-5 gap-6">
 
-        {/* Heading */}
-        <h1 className="text-3xl font-serif font-bold text-white leading-[1.15] animate-fadeInUp drop-shadow-2xl">
+        {/* Heading — NO animation: LCP element must be visible immediately */}
+        <h1 className="text-3xl font-serif font-bold text-white leading-[1.15] drop-shadow-2xl">
           Best Dental Clinic in Gurgaon
           <br />
           <span className="text-lemon-green text-xl italic">Painless Dental Care Near You</span>
         </h1>
 
-        {/* Hero image */}
-        <div className="relative w-full h-48 rounded-2xl overflow-hidden animate-fadeInUp">
+        {/* Hero image — NO animation: LCP element, priority loaded */}
+        <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
           <Image
             src="/hero.webp"
-            alt="Premium Dental Care"
-            width={600}
-            height={480}
-            className="w-full h-full object-cover"
+            alt="Best dental clinic in Gurgaon - Cosmodocs"
+            fill
+            className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-tr from-medical-blue/40 via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark/60" />
@@ -79,7 +68,7 @@ export default function Hero() {
           </svg>
         </button>
 
-        {/* Stats - glass card grid like desktop */}
+        {/* Stats */}
         <div className="grid grid-cols-4 gap-2 animate-fadeInUp">
           {[
             { val: "500+", lab: "Patients" },
@@ -95,33 +84,27 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── DESKTOP LAYOUT (hidden on mobile, unchanged) ── */}
+      {/* ── DESKTOP LAYOUT (hidden on mobile) ── */}
       <div className="hidden md:block pt-12">
-        <div
-          style={{
-            width: `${DESKTOP_WIDTH}px`,
-            zoom: scale,
-            margin: "0 auto",
-          }}
-          className="min-h-screen flex items-center px-10 relative z-10 pb-12"
-        >
+        {/* Removed: width:1280px + zoom:scale + resize useEffect.
+            Now uses max-w-[1280px] which is pure CSS, zero JS cost. */}
+        <div className="min-h-screen flex items-center px-10 relative z-10 pb-12 max-w-[1280px] mx-auto w-full">
           <div className="grid grid-cols-[44%_56%] gap-16 items-center w-full">
+
             {/* Left Column: Content */}
             <div className="flex flex-col items-start text-left">
 
-              {/* Heading */}
-              <h1 className="text-5xl font-serif font-bold text-white leading-[1.1] mb-6 animate-fadeInUp delay-100 drop-shadow-2xl">
-                Best Dental Clinic in Gurgaon  <br />
+              {/* Heading — NO animation: LCP element must render immediately */}
+              <h1 className="text-5xl font-serif font-bold text-white leading-[1.1] mb-6 drop-shadow-2xl">
+                Best Dental Clinic in Gurgaon<br />
                 <span className="text-lemon-green text-2xl italic">Painless Dental Care Near You</span>
               </h1>
 
-              {/* Subheading */}
-              <p className="text-xl text-white font-medium leading-relaxed max-w-xl mb-8 animate-fadeInUp delay-200">
+              <p className="text-xl text-white font-medium leading-relaxed max-w-xl mb-8 animate-fadeInUp">
                 Get advanced dental treatment from expert dentists at Cosmodocs.
               </p>
 
-              {/* Bullet Points */}
-              <div className="grid grid-cols-2 gap-y-3 gap-x-8 mb-10 animate-fadeInUp delay-300">
+              <div className="grid grid-cols-2 gap-y-3 gap-x-8 mb-10 animate-fadeInUp">
                 {[
                   "Dental Implants",
                   "Root Canal Treatment (RCT)",
@@ -140,7 +123,7 @@ export default function Hero() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap items-center gap-6 animate-fadeInUp delay-400">
+              <div className="flex flex-wrap items-center gap-6 animate-fadeInUp">
                 <button
                   onClick={() => window.dispatchEvent(new Event("openContactPopup"))}
                   className="bg-lemon-green text-medical-blue px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest shadow-2xl shadow-lemon-green/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-3 cursor-pointer"
@@ -174,8 +157,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Stats Summary - Compact Glass Cards */}
-              <div className="mt-10 grid grid-cols-4 gap-2 animate-fadeInUp delay-400 w-full max-w-3xl">
+              <div className="mt-10 grid grid-cols-4 gap-2 animate-fadeInUp w-full max-w-3xl">
                 {[
                   { val: "500+", lab: "Happy Patients" },
                   { val: "4.7★", lab: "Rated Clinic" },
@@ -190,21 +172,18 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="relative h-[480px] animate-fadeInUp delay-200 rounded-xl overflow-hidden ml-auto w-full">
-
+            {/* Right: Hero Image — NO animation: LCP element on desktop */}
+            <div className="relative h-[480px] rounded-xl overflow-hidden ml-auto w-full">
               <Image
                 src="/hero.webp"
-                alt="Premium Dental Care"
-                width={600}
-                height={480}
-                className="w-full h-full object-cover"
+                alt="Best dental clinic in Gurgaon - Cosmodocs"
+                fill
+                className="object-cover"
                 priority
+                sizes="(max-width: 768px) 0px, (max-width: 1280px) 56vw, 716px"
               />
-
-              {/* subtle overlays */}
               <div className="absolute inset-0 bg-gradient-to-tr from-medical-blue/40 via-transparent to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark/60" />
-
             </div>
           </div>
         </div>

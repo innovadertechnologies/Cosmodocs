@@ -1,6 +1,9 @@
 "use client";
 import Image from "next/image";
-import BeforeAfter from "./BeforeAfter";
+import dynamic from "next/dynamic";
+
+// Dynamic import — BeforeAfter has complex drag logic; load it separately
+const BeforeAfter = dynamic(() => import("./BeforeAfter"));
 
 const services = [
   {
@@ -146,6 +149,8 @@ export default function Services() {
                   width={400}
                   height={192}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 45vw, (max-width: 1024px) 22vw, 280px"
                 />
               </div>
 

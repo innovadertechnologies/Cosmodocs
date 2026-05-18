@@ -1,16 +1,23 @@
+import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Services from "./components/Services";
-import FamilyCard from "./components/FamilyCard";
-import DentalCareRange from "./components/DentalCareRange";
-import WhyUs from "./components/WhyUs";
-import Doctor from "./components/Doctor";
-import SocialProof from "./components/SocialProof";
-import Testimonials from "./components/Testimonials";
-import LeadForm from "./components/LeadForm";
-import FAQ from "./components/FAQ";
-import Footer from "./components/Footer";
-import PopupContactForm from "./components/PopupContactForm";
+
+// Below-fold sections — dynamic imports create separate JS chunks.
+// Each loads its own bundle only when the page renders that section.
+// This dramatically reduces initial JS parse time on mobile.
+const Services = dynamic(() => import("./components/Services"));
+const FamilyCard = dynamic(() => import("./components/FamilyCard"));
+const DentalCareRange = dynamic(() => import("./components/DentalCareRange"));
+const WhyUs = dynamic(() => import("./components/WhyUs"));
+const Doctor = dynamic(() => import("./components/Doctor"));
+
+const Testimonials = dynamic(() => import("./components/Testimonials"));
+const LeadForm = dynamic(() => import("./components/LeadForm"));
+const FAQ = dynamic(() => import("./components/FAQ"));
+const Footer = dynamic(() => import("./components/Footer"));
+
+// PopupContactForm starts with isOpen=false so SSR renders null — ssr:false not needed
+const PopupContactForm = dynamic(() => import("./components/PopupContactForm"));
 
 export default function Home() {
   return (
@@ -24,11 +31,8 @@ export default function Home() {
           <div className="absolute inset-0 max-w-[1200px] mx-auto rounded-[40px] bg-black/20 blur-2xl -z-10" />
 
           {/* MAIN WRAPPER */}
-          <div className=" bg-[#F2F8D5] rounded-[30px] pt-12 pb-12 max-w-[1400px] mx-auto shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
-
+          <div className="bg-[#F2F8D5] rounded-[30px] pt-12 pb-12 max-w-[1400px] mx-auto shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
             <div className="px-6 lg:px-8">
-
-
               <Services />
               <FamilyCard />
               <DentalCareRange />
@@ -37,9 +41,7 @@ export default function Home() {
               <Testimonials />
               <LeadForm />
               <FAQ />
-
             </div>
-
           </div>
 
         </div>

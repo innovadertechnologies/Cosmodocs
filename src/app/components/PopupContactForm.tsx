@@ -34,7 +34,7 @@ export default function PopupContactForm() {
       if (!hasClosed) {
         setIsOpen(true);
       }
-    }, 2000);
+    }, 5000); // Delayed to 5s — avoids firing during initial hydration
     return () => clearTimeout(timer);
   }, [hasClosed]);
 

@@ -1,4 +1,4 @@
-"use client";
+// Server Component — no client-only APIs needed
 import Image from "next/image";
 
 const products = [
@@ -42,7 +42,7 @@ export default function DentalCareRange() {
   return (
     <section
       id="dental-care-range"
-      className="py-10 lg:py-14 relative overflow-hidden"
+      className="py-10 lg:py-14 relative overflow-hidden cv-section"
     >
       {/* ── Section Header ── */}
       <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14 px-4 animate-fadeInUp">
@@ -67,7 +67,7 @@ export default function DentalCareRange() {
               {product.tagline}
             </span>
 
-            {/* Product Image */}
+            {/* Product Image — lazy loaded (below fold) */}
             <div className="w-full h-36 xs:h-40 md:h-52 mb-4 md:mb-7 rounded-lg md:rounded-2xl overflow-hidden border border-white/10 group-hover:border-lemon-green/30 transition-all duration-500">
               <Image
                 src={product.image}
@@ -75,6 +75,8 @@ export default function DentalCareRange() {
                 width={600}
                 height={400}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                sizes="(max-width: 640px) 90vw, (max-width: 860px) 45vw, 390px"
               />
             </div>
 

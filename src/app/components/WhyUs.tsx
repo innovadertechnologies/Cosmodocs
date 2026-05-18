@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+
 const reasons = [
   "Experienced Dental Experts",
   "Advanced Technology",
@@ -9,7 +11,7 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section className="py-6 lg:py-4 relative overflow-hidden" id="why-us">
+    <section className="py-6 lg:py-4 relative overflow-hidden cv-section" id="why-us">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-0 relative z-10">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between">
 
@@ -32,15 +34,19 @@ export default function WhyUs() {
             </button>
           </div>
 
-          {/* CENTER */}
+          {/* CENTER — replaced <img> with next/image for optimization */}
           <div className="w-full lg:w-[30%] flex justify-center items-center py-8 lg:py-4 relative">
             {/* glow */}
-            <div className="absolute w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] bg-lemon-green/10 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute w-[200px] h-[200px] lg:w-[300px] lg:h-[300px] bg-lemon-green/10 rounded-full blur-3xl -z-10" />
 
-            <img
+            <Image
               src="/tooth.webp"
-              alt="Dental"
+              alt="Dental care icon"
+              width={320}
+              height={320}
               className="max-w-[150px] sm:max-w-[200px] lg:max-w-[320px] w-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform duration-700 hover:scale-105"
+              loading="lazy"
+              sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 320px"
             />
           </div>
 
@@ -53,15 +59,10 @@ export default function WhyUs() {
             <ul className="space-y-4 lg:space-y-5 inline-block text-left">
               {reasons.map((reason, index) => (
                 <li key={index} className="flex items-center gap-2 lg:gap-3">
-
-                  {/* bullet */}
-                  <span className="w-2.5 h-2.5 lg:w-3 lg:h-3 min-w-[10px] rounded-full bg-lemon-green shadow-[0_0_12px_rgba(181,211,51,0.5)] flex-shrink-0"></span>
-
-                  {/* text */}
+                  <span className="w-2.5 h-2.5 lg:w-3 lg:h-3 min-w-[10px] rounded-full bg-lemon-green shadow-[0_0_12px_rgba(181,211,51,0.5)] flex-shrink-0" />
                   <span className="text-base lg:text-lg font-bold text-medical-blue/90">
                     {reason}
                   </span>
-
                 </li>
               ))}
             </ul>

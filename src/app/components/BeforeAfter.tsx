@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import Image from "next/image";
 
 const comparisons = [
   {
@@ -66,14 +67,6 @@ function ComparisonCard({
     [handleMove]
   );
 
-  // Placeholder backgrounds when no image is set
-  const beforeBg = beforeImage
-    ? `url("${beforeImage}")`
-    : "linear-gradient(135deg, #374151 0%, #1f2937 100%)";
-  const afterBg = afterImage
-    ? `url("${afterImage}")`
-    : "linear-gradient(135deg, #1e3a5f 0%, #0f766e 100%)";
-
   return (
     <div className="group">
       <div
@@ -87,33 +80,31 @@ function ComparisonCard({
         onTouchEnd={handleMouseUp}
         onTouchMove={handleTouchMove}
       >
-        {/* After Image (Full Background) */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: afterBg }}
-        >
-          {/* Placeholder text when no image */}
-          {!afterImage && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-white/20 text-sm font-medium">After image placeholder</span>
-            </div>
-          )}
+        {/* After Image — next/image with lazy loading */}
+        <div className="absolute inset-0">
+          <Image
+            src={afterImage}
+            alt={`${title} - After treatment at Cosmodocs`}
+            fill
+            className="object-cover"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
         </div>
 
-        {/* Before Image (Clipped) */}
+        {/* Before Image — clipped by slider position */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: beforeBg,
-            clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
-          }}
+          className="absolute inset-0"
+          style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
         >
-          {/* Placeholder text when no image */}
-          {!beforeImage && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-white/20 text-sm font-medium">Before image placeholder</span>
-            </div>
-          )}
+          <Image
+            src={beforeImage}
+            alt={`${title} - Before treatment at Cosmodocs`}
+            fill
+            className="object-cover"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
         </div>
 
         {/* Slider Line & Handle */}
@@ -121,10 +112,7 @@ function ComparisonCard({
           className="absolute top-0 bottom-0 z-20"
           style={{ left: `${sliderPos}%`, transform: "translateX(-50%)" }}
         >
-          {/* Vertical Line */}
           <div className="w-[2px] h-full bg-white/80 shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
-
-          {/* Handle */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-[0_4px_20px_rgba(0,0,0,0.3)] flex items-center justify-center transition-transform duration-200 hover:scale-110 active:scale-95">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e3a5f" strokeWidth="2.5" strokeLinecap="round">
               <path d="M8 4l-6 8 6 8" />
@@ -159,7 +147,7 @@ function ComparisonCard({
           After
         </div>
 
-        {/* Bottom gradient for readability */}
+        {/* Bottom gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none" />
       </div>
 
@@ -176,7 +164,7 @@ function ComparisonCard({
 
 export default function BeforeAfter() {
   return (
-    <div className="mt-12 animate-fadeInUp">
+    <div className="mt-12 animate-fadeInUp cv-section">
       {/* Section Header */}
       <div className="text-center max-w-2xl mx-auto mb-6">
         <h2 className="text-3xl md:text-4xl font-serif font-bold text-medical-blue leading-tight">

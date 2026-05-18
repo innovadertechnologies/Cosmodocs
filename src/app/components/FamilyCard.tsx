@@ -54,10 +54,11 @@ export default function FamilyCard() {
         <div className="absolute inset-0 z-0 lg:hidden opacity-[0.12] pointer-events-none">
           <Image
             src="/familycard.webp"
-            alt="Background Graphic"
+            alt="Family dental care"
             fill
             className="object-cover object-center scale-110"
-            priority
+            loading="lazy"
+            sizes="100vw"
           />
         </div>
 
@@ -143,10 +144,11 @@ export default function FamilyCard() {
               <div className="relative w-full max-w-[600px] lg:max-w-[900px] aspect-[16/10] lg:aspect-auto lg:w-[160%] lg:h-[160%] lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-[-10%] z-10 mt-8 lg:mt-0">
                 <Image
                   src="/familycard.webp"
-                  alt="Happy Family Dental Care"
+                  alt="Happy family at Cosmodocs dental clinic"
                   fill
                   className="object-contain object-center lg:object-right drop-shadow-2xl"
-                  priority
+                  loading="lazy"
+                  sizes="(max-width: 1024px) 0px, 50vw"
                 />
               </div>
             </div>
