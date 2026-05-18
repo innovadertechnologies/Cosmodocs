@@ -15,11 +15,19 @@ const config: Config = {
         "accent-light": "#F2F8D5",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
+        sans: ["var(--font-sans)", "sans-serif"],
+        serif: ["var(--font-serif)", "serif"],
       },
     },
   },
   plugins: [],
+  // Performance optimizations
+  future: {
+    hoverOnlyWhenSupported: true, // Prevents hover styles on touch devices
+  },
+  experimental: {
+    optimizeUniversalDefaults: true,
+  },
 };
+
 export default config;

@@ -27,7 +27,7 @@ export default function Hero() {
             fill
             className="object-cover"
             priority
-            sizes="100vw"
+            sizes="(max-width: 768px) 90vw, 50vw"
           />
           <div className="absolute inset-0 bg-gradient-to-tr from-medical-blue/40 via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark/60" />
@@ -180,7 +180,7 @@ export default function Hero() {
                 fill
                 className="object-cover"
                 priority
-                sizes="(max-width: 768px) 0px, (max-width: 1280px) 56vw, 716px"
+                sizes="(max-width: 768px) 0px, 56vw"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-medical-blue/40 via-transparent to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark/60" />

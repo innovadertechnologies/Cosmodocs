@@ -24,7 +24,7 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <main>
+      <main id="main-content">
         <div className="relative z-10 md:mt-[-40px] px-4">
 
           {/* SOFT DARK GLOW */}

@@ -147,7 +147,8 @@ export default function FamilyCard() {
                   alt="Happy family at Cosmodocs dental clinic"
                   fill
                   className="object-contain object-center lg:object-right drop-shadow-2xl"
-                  loading="lazy"
+                  loading="eager"
+                  priority
                   sizes="(max-width: 1024px) 0px, 50vw"
                 />
               </div>
