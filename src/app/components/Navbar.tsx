@@ -25,7 +25,6 @@ export default function Navbar() {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMenuOpen(false);
-
     if (href.startsWith('#')) {
       const targetId = href.replace('#', '');
       const elem = document.getElementById(targetId);
@@ -33,7 +32,6 @@ export default function Navbar() {
         const offset = 80;
         const elementPosition = elem.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
-
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth"
@@ -114,7 +112,6 @@ export default function Navbar() {
       {/* Premium Mobile Menu */}
       <div className={`fixed inset-0 z-[90] bg-[#1a2f4d]/95 backdrop-blur-2xl transition-all duration-500 lg:hidden ${menuOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}>
-
         {/* Decorative glows inside menu */}
         <div className="absolute top-0 right-0 w-[80vw] h-[80vw] bg-lemon-green/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
         <div className="absolute bottom-0 left-[-20%] w-[80vw] h-[80vw] bg-[#1e3a5f]/40 rounded-full blur-[120px] -z-10 pointer-events-none" />

@@ -20,7 +20,6 @@ export default function Footer() {
                 width={56}
                 height={56}
                 className="object-cover rounded-full"
-
               />
             </div>
             <h2 className="text-2xl font-serif font-bold">Cosmodocs</h2>
