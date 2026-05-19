@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 // Reduced from 7 weights to 3 — eliminates 4 unnecessary font file downloads
@@ -109,6 +110,24 @@ export default function RootLayout({
           <div className="glow-blue" />
         </div>
         {children}
+        
+        {/* Google tag (gtag.js) */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18128245000"
+        />
+        <Script
+          id="google-ads-tag"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-18128245000');
+            `,
+          }}
+        />
       </body>
     </html>
   );
